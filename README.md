@@ -10,3 +10,7 @@ As a user I want to add text by user interface to golo.
 - Text
   - content
   - timestamp
+
+## TODO
+
+- test textService

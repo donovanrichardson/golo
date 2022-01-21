@@ -1,30 +1,33 @@
 package com.text.golo.controller;
 
 import com.text.golo.entity.Text;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.text.golo.service.TextService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 // path should be api/v1/texts
+@RequestMapping("/api/vi/text")
 public class TextController {
+
+    @Autowired
+    private TextService textService;
 
     @GetMapping("/")
     public List<Text> getTexts(){
-        return null;
+        return textService.allTexts();
     }
 
     @GetMapping("/{id}")
     public Text getText(@PathVariable String id){
-        return null;
+        return textService.getTextById(id);
     }
 
     @PostMapping("/")
-    public Text addText(Text text){
-        return null;
+    public Text addText(@RequestBody Text text){
+        return textService.addText(text);
     }
 
 }
