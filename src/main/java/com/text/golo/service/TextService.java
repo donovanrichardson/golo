@@ -6,22 +6,24 @@ import com.text.golo.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TextService {
 
-//    @Autowired
+    @Autowired
     TextRepository textRepository;
 
     public Text addText(Text text) {
-        return null;
+        return textRepository.insert(text);
     }
 
     public List<Text> allTexts() {
-        return null;
+        return textRepository.findAll();
     }
 
     public Text getTextById(String id) {
-        return null;
+        Optional<Text> retrieved = textRepository.findById(id);
+        return retrieved.orElse(null);
     }
 }
