@@ -25,5 +25,6 @@ public class TextService {
     public Text getTextById(String id) {
         Optional<Text> retrieved = textRepository.findById(id);
         return retrieved.orElse(null);
+//        should throw not found error
     }
 }

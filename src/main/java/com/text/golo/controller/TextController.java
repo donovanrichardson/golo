@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 // path should be api/v1/texts
-@RequestMapping("/api/vi/text")
+@RequestMapping("/api/v1/text")
 public class TextController {
 
     @Autowired

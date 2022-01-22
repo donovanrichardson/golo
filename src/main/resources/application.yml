@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/golo
+#security:
+#  ignored: /**
+#  basic:
+#    enable: false
+##    security??
