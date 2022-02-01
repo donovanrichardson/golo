@@ -2,8 +2,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/golo
+logging.level.org.springframework.web: DEBUG
 #security:
 #  ignored: /**
 #  basic:
 #    enable: false
-##    security??
+##    security??x
