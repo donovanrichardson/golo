@@ -7,12 +7,16 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -66,5 +70,13 @@ class TextServiceTest {
         assertNull(queried3);
 
 
+    }
+
+    @Test
+    void mostRecent10() {
+//        Pageable pageable = PageRequest.of(0,10, Sort.by("timestamp").descending());
+//        List<Text> mostRecent10 = textService.mostRecent10();
+//        verify(textRepository).findAll(eq(pageable));
+        // TODO i don't know how to test this
     }
 }

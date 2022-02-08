@@ -56,11 +56,19 @@ class TextControllerTest {
 
         when(textService.addText(T1)).thenReturn(INSERTED_TEXT);
 
-        Text addedText = textService.addText(T1);
+        Text addedText = textController.addText(T1);
 
         verify(textService).addText(T1);
 
         assertEquals(INSERTED_TEXT, addedText);
 
+    }
+
+    @Test
+    void mostRecent10() {
+        when(textService.mostRecent10()).thenReturn(TEXT_LIST);
+        List<Text> retrievedTexts = textController.mostRecent10();
+        verify(textService).mostRecent10();
+        assertEquals(TEXT_LIST,retrievedTexts);
     }
 }

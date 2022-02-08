@@ -3,6 +3,9 @@ package com.text.golo.service;
 import com.text.golo.entity.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.text.golo.repository.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,5 +29,10 @@ public class TextService {
         Optional<Text> retrieved = textRepository.findById(id);
         return retrieved.orElse(null);
 //        should throw not found error
+    }
+
+    public List<Text> mostRecent10() {
+        Page<Text> mostRecentPage = textRepository.findAll(PageRequest.of(0,10, Sort.by("timestamp").descending()));
+        return mostRecentPage.getContent();
     }
 }

@@ -24,6 +24,11 @@ public class TextController {
         return textService.allTexts();
     }
 
+    @GetMapping("/10-recent")
+    public List<Text> mostRecent10(){
+        return textService.mostRecent10();
+    }
+
     @GetMapping("/{id}")
     public Text getText(@PathVariable String id){
         return textService.getTextById(id);

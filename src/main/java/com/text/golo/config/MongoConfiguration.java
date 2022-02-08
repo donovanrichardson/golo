@@ -13,6 +13,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Configuration
@@ -55,16 +56,17 @@ public class MongoConfiguration {
     }
 
     @ReadingConverter
-    enum LDTToZonedDateTimeConverter implements Converter<LocalDateTime, ZonedDateTime> {
+    enum LDTToZonedDateTimeConverter implements Converter<Date, ZonedDateTime> {
 
         INSTANCE;
 
         @Override
-        public ZonedDateTime convert(LocalDateTime source) {
-            return ZonedDateTime.of(source, ZoneOffset.UTC);
+        public ZonedDateTime convert(Date source) {
+            return ZonedDateTime.ofInstant(source.toInstant(), ZoneOffset.UTC);
         }
     }
 
+    //TODO change this from ZDT to Date
     @WritingConverter
     enum ZonedDateTimeToLDTConverter implements Converter<ZonedDateTime, LocalDateTime> {
 
