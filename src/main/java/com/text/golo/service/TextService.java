@@ -17,8 +17,16 @@ public class TextService {
     @Autowired
     TextRepository textRepository;
 
+    @Autowired
+    TfIdfService tfIdfService;
+
     public Text addText(Text text) {
-        return textRepository.insert(text);
+        long count = textRepository.count();
+        int sample = (int) Math.floor(Math.sqrt((double) count));
+        List<Text> sampleTexts = textRepository.findAll(PageRequest.of(0,sample, Sort.by("timestamp").descending())).getContent();
+        Text textToBeAdded = tfIdfService.injectKeywords(sampleTexts,text);
+
+        return textRepository.insert(textToBeAdded);
     }
 
     public List<Text> allTexts() {
