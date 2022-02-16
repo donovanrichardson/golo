@@ -13,4 +13,6 @@ As a user I want to add text by user interface to golo.
 
 ## TODO
 
-- test textService
+- more complete testing
+- case insensitivity
+- getting rid of the TODO in front end

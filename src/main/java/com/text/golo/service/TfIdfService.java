@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Service
 public class TfIdfService {
 
-    private String delimiter = "\\b[^\\s]+\\b";
+    private String delimiter = "[^\\w']+";
 
     /**
      * @author Mohamed Guendouz
