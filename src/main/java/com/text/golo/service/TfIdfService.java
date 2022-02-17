@@ -62,7 +62,7 @@ public class TfIdfService {
     }
 
     private List<String> tokenize(Text text){
-        return Arrays.asList(text.getContent().split(this.delimiter));
+        return Arrays.asList(text.getContent().toLowerCase().split(this.delimiter));
     }
 
 //    private List<Keyword> getKeywordsForText()
