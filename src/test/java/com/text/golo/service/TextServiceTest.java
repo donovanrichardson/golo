@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -26,6 +27,9 @@ class TextServiceTest {
     @Mock
     TextRepository textRepository;
 
+    @Spy
+    TfIdfService tfIdfService;
+
     @InjectMocks
     TextService textService;
 
@@ -40,10 +44,10 @@ class TextServiceTest {
     void addText() {
 // TODO find out why failing
 
-//        when(textRepository.insert(TEXT_A)).thenReturn(INSERTED_TEXT);
-//        Text returnedText = textService.addText(TEXT_A);
-//        verify(textRepository).insert(TEXT_A);
-//        assertEquals(INSERTED_TEXT,returnedText);
+        when(textRepository.insert(TEXT_A)).thenReturn(INSERTED_TEXT);
+        Text returnedText = textService.addText(TEXT_A);
+        verify(textRepository).insert(TEXT_A);
+        assertEquals(INSERTED_TEXT,returnedText);
 
     }
 

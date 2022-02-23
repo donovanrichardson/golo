@@ -8,6 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,12 +24,17 @@ public class TextService {
 
     public Text addText(Text text) {
         long count = textRepository.count();
+        List<Text> sampleTexts;
 //        if (count == 0){
 //            count = 1;
 //        }
 //        int sample = (int) Math.ceil(Math.sqrt((double) count));
         int sample = (int) Math.floor(Math.sqrt((double) count));
-        List<Text> sampleTexts = textRepository.findAll(PageRequest.of(0,sample, Sort.by("timestamp").descending())).getContent();
+        if(sample == 0){
+            sampleTexts = new ArrayList<>();
+        }else{
+            sampleTexts = textRepository.findAll(PageRequest.of(0,sample, Sort.by("timestamp").descending())).getContent();
+        }
         Text textToBeAdded = tfIdfService.injectKeywords(sampleTexts,text);
 
         return textRepository.insert(textToBeAdded);
