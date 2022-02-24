@@ -42,7 +42,6 @@ class TextServiceTest {
 
     @Test
     void addText() {
-// TODO find out why failing
 
         when(textRepository.insert(TEXT_A)).thenReturn(INSERTED_TEXT);
         Text returnedText = textService.addText(TEXT_A);
